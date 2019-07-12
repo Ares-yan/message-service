@@ -1,0 +1,80 @@
+
+server: 
+  port: 9999
+
+
+#server
+#  server: 
+#    waitTimeInMsWhenSyncEmpty: 0
+#    enableSelfPreservation: false
+#database setting
+spring:
+    session: 
+      store-type: none
+    datasource: 
+      #url: ${spring_datasource_url:jdbc:postgresql://sql.jycrtc.com:9202/smart_parking}
+      #username: ${spring_datasource_username:postgres}
+      #password: ${spring_datasource_password:szfangle@123}
+      url: ${spring_datasource_url:jdbc:postgresql://pgm-wz9006t1oky2042t3o.pg.rds.aliyuncs.com:3432/smart_parking}
+      username: ${spring_datasource_username:bull}
+      password: ${spring_datasource_password:vvAFXHrxKe672Rc*Y43T*Fv4wPkrxTiV}
+      driver-class-name: org.postgresql.Driver
+    #druid pool settings
+    druid:
+      initial-size: ${spring_datasource_druid_initial_size:10}
+      max-active: ${spring_datasource_druid_max_active:20}
+      min-idle: ${spring_datasource_druid_min_idle:3}
+      #配置获取连接等待超时的时间
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      validation-query: SELECT 'x'
+      test-on-borrow: true
+      test-on-return: true
+      test-while-idle: true
+      #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      time-between-eviction-runs-millis: 60000
+      #配置一个连接在池中最小生存的时间，单位是毫秒
+      min-evictable-idle-time-millis: 300000
+      #spring.datasource.druid.max-evictable-idle-time-millis=
+      filters: stat
+    application:
+        name: cloud-client
+    profiles: 
+      active: 
+    redis:
+      host: ${spring_redis_host:localhost}
+      port: ${spring_redis_port:6379}
+      password: ${spring_redis_password:root123}
+      database: 1
+      oauthDatabase: 2
+      timeout: 2000
+      namespace: bull
+
+swagger:
+  show: ${swagger_show:true} 
+  
+#阿里云
+user:
+  aliyun:
+    smsCode:
+
+#访问MNS服务的接入地址
+      mnsEndpoint: #
+#发送短信使用的主题
+      topic: 
+#发送短信使用的签名
+      signName: luck
+#注册模板Code
+      regTemplateCode: #
+#登录模板Code
+      loginTemplateCode: #
+#忘记密码模板Code
+      forgetTemplateCode: #
+#绑定手机模板Code
+      bindTemplateCode: #
+#免注账号升级模板Code
+      upgradeTemplateCode: #
+      #短信验证模板Code
+      phoneVerify: SMS_170110470
+      domain: dysmsapi.aliyuncs.com
