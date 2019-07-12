@@ -58,7 +58,6 @@ swagger:
 user:
   aliyun:
     smsCode:
-
 #访问MNS服务的接入地址
       mnsEndpoint: #
 #发送短信使用的主题
